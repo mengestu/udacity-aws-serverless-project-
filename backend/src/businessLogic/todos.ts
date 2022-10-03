@@ -21,7 +21,10 @@ export async function createTodo(jwtToken: string, newTodoData: TodoCreate): Pro
   const userId = getUserId(jwtToken);
   const createdAt = new Date().toISOString();
   const done = false;
-  const newTodo: TodoItem = { todoId, userId, createdAt, done, ...newTodoData };
+  const newTodo: TodoItem = {
+    todoId, userId, createdAt, done, ...newTodoData,
+    attachmentUrl: ''
+  };
   return todoAccess.createTodo(newTodo);
 }
 
